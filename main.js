@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 const swaggerConfig = require('./src/configs/swagger.config');
 const mainRouter = require('./src/app.routes');
+const NotFoundHandler = require('./src/commons/exceptions/notfound.handler');
+const AllExceptionsHandler = require('./src/commons/exceptions/exceptions.handler');
 
 async function main() {
   const app = express();
@@ -20,6 +22,10 @@ async function main() {
   // Route
   app.use(mainRouter)
 
+
+  // Error Handling
+  NotFoundHandler(app)
+  AllExceptionsHandler(app)
 
   app.listen(3000, () => {
     console.log(`Server running on port ${port}: http://localhost:${port}`);
