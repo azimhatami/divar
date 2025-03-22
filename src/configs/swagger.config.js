@@ -4,6 +4,7 @@ const swaggerJsDoc = require('swagger-jsdoc');
 function swaggerConfig(app) {
   const swaggerDocument = swaggerJsDoc({
     swaggerDefinition: {
+      openapi: '3.0.4',
       info: {
         title: 'divar',
         version: '1.0.0',
@@ -14,7 +15,7 @@ function swaggerConfig(app) {
         }
       },
     },
-    apis: []
+    apis: ['src/modules/**/*.swagger.js']
   });
   
   const swagger = swaggerUi.setup(swaggerDocument, {});
