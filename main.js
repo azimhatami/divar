@@ -5,6 +5,8 @@ const swaggerConfig = require('./src/configs/swagger.config');
 const mainRouter = require('./src/app.routes');
 const NotFoundHandler = require('./src/commons/exceptions/notfound.handler');
 const AllExceptionsHandler = require('./src/commons/exceptions/exceptions.handler');
+const cookieParser = require('cookie-parser');
+
 
 async function main() {
   const app = express();
@@ -15,6 +17,7 @@ async function main() {
 
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
+  app.use(cookieParser(process.env.COOKIE_SECRET_KEY))
 
   // Swagger config
   swaggerConfig(app)
