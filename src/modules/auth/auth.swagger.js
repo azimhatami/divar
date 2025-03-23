@@ -17,6 +17,18 @@
  *        mobile:
  *          type: string
  *          example: 09XXXXXXXXX
+ *    CheckOTP:
+ *      type: object
+ *      required:
+ *        - mobile
+ *        - code
+ *      properties:
+ *        mobile:
+ *          type: string
+ *          example: 09XXXXXXXXX
+ *        code:
+ *          type: string
+ *          example: XXXXX
  */
 
 
@@ -39,4 +51,25 @@
  *    responses:
  *      200:
  *        description: OTP sent successfully
+ */
+
+/**
+ * @swagger
+ * 
+ * /auth/check-otp:
+ *  post:
+ *    summary: Verify OTP for user login
+ *    tags:
+ *      - Authentication
+ *    requestBody:
+ *      content:
+ *        application/x-www-form-urlencoded:
+ *          schema:
+ *            $ref: '#/components/schemas/CheckOTP'
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/CheckOTP'
+ *    responses:
+ *      200:
+ *        description: OTP verified successfully. Login approved
  */
