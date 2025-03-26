@@ -4,11 +4,8 @@ const AuthMessages = {
   NotFound: 'User not found',
   OtpCodeNotExpired: 'OTP still active, Try later.',
   OtpCodeExpired: 'OTP code expired. Request a new one.',
-<<<<<<< HEAD
   OtpCodeIsIncorrect: 'Incorrect OTP code. Try again.',
-=======
-  OtpCodeIsIncorrect: 'Incorrect OTP code. Try again.'
->>>>>>> origin/master
+  OtpCodeIsIncorrect: 'Incorrect OTP code. Try again.',
   Logout: 'logout successful',
 };
 
