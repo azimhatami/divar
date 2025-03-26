@@ -2,6 +2,7 @@ const { AuthMessages } = require('./auth.messages');
 const authService = require('./auth.service');
 const autoBind = require('auto-bind');
 const NodeEnv = require('../../commons/constant/env.enum');
+const CookieNames = require('../../commons/constant/cookie.enum');
 
 class AuthController {
   #service;
@@ -30,6 +31,16 @@ class AuthController {
         secure: process.env.NODE_ENV === NodeEnv.Production
       }).status(200).json({
         message: AuthMessages.CheckOtpSuccessfully,
+      });
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async logout(req, res, next) {
+    try {
+      return res.clearCookie(CookieNames.AccessToken).status(200).json({
+        message: AuthMessages.Logout,
       });
     } catch (error) {
       next(error)

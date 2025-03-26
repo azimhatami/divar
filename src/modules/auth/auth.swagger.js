@@ -73,3 +73,16 @@
  *      200:
  *        description: OTP verified successfully. Login approved
  */
+
+/**
+ * @swagger
+ * 
+ * /auth/logout:
+ *  get:
+ *    summary: Log out the current user
+ *    tags:
+ *      - Authentication
+ *    responses:
+ *      200:
+ *        description: Successfully logged out.
+ */
