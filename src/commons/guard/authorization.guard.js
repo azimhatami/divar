@@ -7,7 +7,7 @@ const userModel = require('../../modules/user/user.model');
 
 const authorization = async (req, res, next) => {
   try {
-    const token = req?.cookie?.access_token;
+    const token = req?.cookies?.access_token;
     if (!token) {
       throw new createHttpError.Unauthorized(authorizationMSG.Login)
     }
@@ -15,7 +15,7 @@ const authorization = async (req, res, next) => {
     const data = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
     if (typeof data === 'object' && 'id' in data) {
-      const user = await userModel.findById(data.id, {accessToken: 0, otp: 0}).lean();
+      const user = await userModel.findById(data.id, {accessToken: 0, otp: 0, updatedAt: 0, __v: 0, verifiedMobile: 0}).lean();
       if (!user) throw new createHttpError.Unauthorized(authorizationMSG.NotFoundAccount)
       req.user = user;
       return next();
