@@ -1,4 +1,4 @@
-const { CategoryMsg } = require('./category.messages');
+const CategoryMsg = require('./category.messages');
 const categoryService = require('./category.service');
 const autoBind = require('auto-bind');
 
