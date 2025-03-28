@@ -50,10 +50,46 @@ class OptionService {
       );
   }
 
+  async findByCategorySlug(slug) {
+    const options = await this.#model.aggregate([
+      {
+        $lookup: {
+          from: 'categories',
+          localField: 'category',
+          foreignField: '_id',
+          as: 'category'
+        }
+      },
+      {
+        $unwind: '$category'
+      },
+      {
+        $addFields: {
+          categorySlug: '$category.slug',
+          categoryName: '$category.name',
+          categoryIcon: '$category.icon',
+        }
+      },
+      {
+        $project: {
+          category: 0,
+          __v: 0
+        }
+      },
+      {
+        $match: {
+          categorySlug: slug
+        }
+      }
+    ]);
+
+    return options;
+  }
+
   async checkExistById(id) {
-    const category = await this.#categoryModel.findById(id);
-    if (!category) throw new createHttpError.NotFound(OptionMsg.notfound)
-    return category;
+    const option = await this.#model.findById(id);
+    if (!option) throw new createHttpError.NotFound(OptionMsg.notfound)
+    return option;
   }
 
   async alreadyExistByCategoryAndKey(key, category) {

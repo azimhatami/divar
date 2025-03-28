@@ -116,6 +116,26 @@
 
 /**
  * @swagger
+ * /option/by-category-slug/{slug}:
+ *   get:
+ *     summary: Get all options for a category
+ *     description: Retrieve all options associated with a specific category
+ *     tags: [Options]
+ *     parameters:
+ *       - in: path
+ *         name: slug
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Slug
+ *         example: "test"
+ *     responses:
+ *       200:
+ *         description: List of category options
+ */
+
+/**
+ * @swagger
  * /option/{id}:
  *   get:
  *     summary: Get option details

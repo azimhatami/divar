@@ -43,6 +43,18 @@ class OptionController {
     }
   }
 
+  async findByCategorySlug(req, res, next) {
+    try {
+      const { slug } = req.params;
+      const options = await this.#service.findByCategorySlug(slug);
+
+      return res.json(options);
+
+    } catch (error) {
+      next(error)
+    }
+  }
+
   async find(req, res, next) {
     try {
       const options = await this.#service.find();
