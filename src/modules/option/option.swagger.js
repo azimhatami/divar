@@ -29,6 +29,8 @@
  *           type: string
  *           description: Globally unique identifier for the option
  *           example: "550e8400-e29b-41d4-a716-446655440000"
+ *         required:
+ *           type: boolean
  *         category:
  *           type: string
  *           format: objectid
@@ -59,7 +61,6 @@
  *     description: Endpoint for creating new options in the system
  *     tags: [Options]
  *     requestBody:
- *       required: true
  *       content:
  *         application/x-www-form-urlencoded:
  *           schema:
@@ -98,7 +99,6 @@
  *         name: categoryId
  *         schema:
  *           type: string
- *         required: true
  *         description: Category ID
  *         example: "507f1f77bcf86cd799439011"
  *     responses:
@@ -126,7 +126,6 @@
  *         name: slug
  *         schema:
  *           type: string
- *         required: true
  *         description: Slug
  *         example: "test"
  *     responses:
@@ -146,7 +145,6 @@
  *         name: id
  *         schema:
  *           type: string
- *         required: true
  *         description: Option ID
  *         example: "550e8400-e29b-41d4-a716-446655440000"
  *     responses:
@@ -183,7 +181,6 @@
  *         name: id
  *         schema:
  *           type: string
- *         required: true
  *         description: Option ID
  *         example: "550e8400e29b41d4a716446655440000"
  *     responses:
