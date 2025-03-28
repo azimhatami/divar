@@ -44,6 +44,11 @@ class OptionService {
     return await this.checkExistById(id);
   }
 
+  async removeById(id) {
+    await this.checkExistById(id)
+    return await this.#model.deleteOne({_id: id});
+  }
+
   async findByCategoryId(category) {
     return await this.#model.find({category}, {__v: 0}).populate(
         [{path: 'category', select: {name: 1, slug: 1}}]

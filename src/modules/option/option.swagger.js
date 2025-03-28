@@ -171,3 +171,24 @@
  *       200:
  *         description: List of system options
  */
+
+/**
+ * @swagger
+ * /option/{id}:
+ *   delete:
+ *     summary: Delete option by id
+ *     tags: [Options]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Option ID
+ *         example: "550e8400e29b41d4a716446655440000"
+ *     responses:
+ *       200:
+ *         description: Option deleted successfully
+ *       404:
+ *         description: Option not found
+ */

@@ -42,6 +42,20 @@ class OptionController {
       next(error)
     }
   }
+  
+  async removeById(req, res, next) {
+    try {
+      const { id } = req.params;
+      await this.#service.removeById(id);
+
+      return res.json({
+        message: OptionMsg.deleted
+      });
+
+    } catch (error) {
+      next(error)
+    }
+  }
 
   async findByCategorySlug(req, res, next) {
     try {
