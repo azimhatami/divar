@@ -10,5 +10,5 @@ router.get('/', optionController.find)
 
 
 module.exports = {
-  optionRoutes
+  optionRoutes: router
 }

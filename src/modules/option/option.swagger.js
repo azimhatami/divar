@@ -61,6 +61,9 @@
  *     requestBody:
  *       required: true
  *       content:
+ *         application/x-www-form-urlencoded:
+ *           schema:
+ *             $ref: '#/components/schemas/Option'
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/Option'
@@ -70,9 +73,6 @@
  *             type: "array"
  *             category: "507f1f77bcf86cd799439011"
  *             enum: ["S", "M", "L", "XL"]
- *         application/x-www-form-urlencoded:
- *           schema:
- *             $ref: '#/components/schemas/Option'
  *     responses:
  *       201:
  *         description: Option created successfully
@@ -147,35 +147,7 @@
  *     summary: List all options
  *     description: Retrieve all system options with filtering and pagination
  *     tags: [Options]
- *     parameters:
- *       - in: query
- *         name: page
- *         schema:
- *           type: integer
- *           default: 1
- *         description: Page number
- *       - in: query
- *         name: limit
- *         schema:
- *           type: integer
- *           default: 10
- *         description: Items per page
  *     responses:
  *       200:
  *         description: List of system options
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 total:
- *                   type: integer
- *                   description: Total number of options
- *                 pages:
- *                   type: integer
- *                   description: Total number of pages
- *                 data:
- *                   type: array
- *                   items:
- *                     $ref: '#/components/schemas/Option'
  */
