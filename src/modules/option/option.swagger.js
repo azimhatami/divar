@@ -51,6 +51,43 @@
  *             type: string
  *           description: Allowed values for enum-type options
  *           example: ["Red", "Blue", "Green"]
+ *     UpdateOption:
+ *       type: object
+ *       properties:
+ *         title:
+ *           type: string
+ *           description: Display name of the option
+ *           example: "Product Color"
+ *         key:
+ *           type: string
+ *           description: Unique key for option identification
+ *           example: "color"
+ *         guid:
+ *           type: string
+ *           description: Globally unique identifier for the option
+ *           example: "550e8400-e29b-41d4-a716-446655440000"
+ *         required:
+ *           type: boolean
+ *         category:
+ *           type: string
+ *           format: objectid
+ *           description: Associated category ID
+ *           example: "507f1f77bcf86cd799439011"
+ *         type:
+ *           type: string
+ *           enum:
+ *             - number
+ *             - string
+ *             - array
+ *             - boolean
+ *           description: Data type of the option
+ *           example: "string"
+ *         enum:
+ *           type: array
+ *           items:
+ *             type: string
+ *           description: Allowed values for enum-type options
+ *           example: ["Red", "Blue", "Green"]
  */
 
 /**
@@ -85,6 +122,32 @@
  *         description: Invalid input data
  *       500:
  *         description: Server error
+ */
+
+/**
+ * @swagger
+ * /option/{id}:
+ *   put:
+ *     summary: Update option by id
+ *     description: Endpoint for updating options in the system
+ *     tags: [UpdateOptions]
+ *     requestBody:
+ *       content:
+ *         application/x-www-form-urlencoded:
+ *           schema:
+ *             $ref: '#/components/schemas/UpdateOption'
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UpdateOption'
+ *           example:
+ *             title: "Product Size"
+ *             key: "size"
+ *             type: "array"
+ *             category: "507f1f77bcf86cd799439011"
+ *             enum: ["S", "M", "L", "XL"]
+ *     responses:
+ *       200:
+ *         description: Option updated successfully
  */
 
 /**
