@@ -1,4 +1,5 @@
 const CategoryModel = require('./category.model');
+const OptionModel = require('../option/option.model');
 const autoBind = require('auto-bind');
 const createHttpError = require('http-errors');
 const CategoryMsg = require('./category.messages');
@@ -8,13 +9,24 @@ const { Types, isValidObjectId } = require('mongoose');
 
 class CategoryService {
   #model;
+  #optionModel;
   constructor() {
     autoBind(this)
     this.#model = CategoryModel;
+    this.#optionModel = OptionModel;
   }
 
   async find() {
     return await this.#model.find({parent: {$exists: false}});
+  }
+
+  async remove(id) {
+    await this.checkExistById(id);
+    await this.#optionModel.deleteMany({category: id}).then(async () => {
+      await this.#model.deleteMany({_id: id})
+    })
+
+    return true;
   }
 
   async create(categoryDto) {
